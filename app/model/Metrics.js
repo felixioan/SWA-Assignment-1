@@ -1,4 +1,4 @@
-const cardinalPoint = ['North', 'West', 'South', 'East'];
+const direction  = ['North', 'West', 'South', 'East'];
 const celsius_TYPE = 'Celsius';
 const celsius_UNIT = 'C';
 const fahrenheit_TYPE = 'Fahrenheit';
@@ -14,7 +14,7 @@ const MpS_TYPE = 'Meters per second';
 
 
 module.exports = {
-    cardinalPoint,
+    direction,
     celsius_TYPE,
     celsius_UNIT,
     fahrenheit_TYPE,
