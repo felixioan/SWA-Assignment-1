@@ -9,7 +9,6 @@ function createTemperaturePrediction(value, type, unit, time, place) {
     temperaturePrediction.convertToF = () => {
         if (temperaturePrediction.getType() !== fahrenheit_TYPE) {
             temperaturePrediction.setValue((temperaturePrediction.getValue() * 9 / 5) + 32);
-            temperaturePrediction.setType(fahrenheit_TYPE);
             temperaturePrediction.setUnit(fahrenheit_UNIT);
         }
     }
@@ -17,7 +16,6 @@ function createTemperaturePrediction(value, type, unit, time, place) {
     temperaturePrediction.convertToC = () => {
         if (temperaturePrediction.getType() !== celsius_TYPE) {
             temperaturePrediction.setValue((temperaturePrediction.getValue() - 32) * 5 / 9);
-            temperaturePrediction.setType(celsius_TYPE);
             temperaturePrediction.setUnit(celsius_UNIT);
         }
     }
