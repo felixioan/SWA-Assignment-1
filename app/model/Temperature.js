@@ -1,27 +1,31 @@
-import {createWeatherData} from "./WeatherData"
-import { celsius_UNIT, fahrenheit_UNIT} from "./Metrics"
+const {WeatherData, } = require ("./WeatherData")
+const { celsius_UNIT, fahrenheit_UNIT} = require ("./Metrics")
 
 function createTemperature(value, type, unit, time, place) {
-    let weatherData = createWeatherData(value, type, unit, time, place);
+    let weatherData =  new WeatherData(value, type, unit, time, place);
 
-    let temperature = Obejct.assign({}, weatherData);
 
-    temperature.convertToF = () => {
-        if (temperature.getUnit() !== fahrenheit_UNIT) {
-            temperature.setUnit(fahrenheit_UNIT);
-            temperature.setValue((temperature.getValue() * 9 / 5) + 32);
+
+    const convertToF = () => {
+        if (weatherData.getUnit() !== fahrenheit_UNIT) {
+            weatherData.setUnit(fahrenheit_UNIT);
+            weatherData.setValue((temperature.getValue() * 9 / 5) + 32);
         }
     }
-    temperature.convertToC = () => {
-        if (temperature.getUnit() !== celsius_UNIT) {
-            temperature.setUnit(celsius_UNIT);
-            temperature.setValue((temperature.getValue() - 32) * 5 / 9);
+    const convertToC = () => {
+        if (weatherData.getUnit() !== celsius_UNIT) {
+            weatherData.setUnit(celsius_UNIT);
+            weatherData.setValue((temperature.getValue() - 32) * 5 / 9);
         }
     }
 
-    return temperature;
+    return {
+        ...weatherData,
+        convertToF,
+        convertToC,
+    }
 }
 
 module.exports = {
-    createTemperature
+    Temperature: createTemperature
 }

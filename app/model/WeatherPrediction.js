@@ -1,9 +1,9 @@
-import {createWeatherData} from "./WeatherData";
-import {createEvent} from "./Event";
+const {createWeatherData} = require ("./WeatherData");
+const {Event} = require ("./Event");
 
 function createWeatherPrediction(value, type, unit, time, place) {
     let weatherData = createWeatherData(value, type, unit);
-    let event = createEvent(time, place);
+    let event = Event(time, place);
 
     let weatherPrediction = Object.assign({}, weatherData, event);
 

@@ -1,15 +1,15 @@
-import {createWeatherData} from "./WeatherData";
+const {WeatherData} = require("./WeatherData");
 
 
 function createCloudCoverage(value, type, unit, time, place) {
-    let weatherData = createWeatherData(value, type, unit, time, place);
+    let weatherData = WeatherData(value, type, unit, time, place);
 
 
-    let cloudCoverage = Object.assign({}, weatherData);
-
-    return cloudCoverage;
+    return {
+        ...weatherData
+    };
 }
 
 module.exports = {
-    createCloudCoverage
+    CloudCoverage : createCloudCoverage
 }

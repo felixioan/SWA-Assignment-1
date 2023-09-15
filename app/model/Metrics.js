@@ -1,4 +1,4 @@
-const direction  = ['North', 'West', 'South', 'East'];
+const Direction  = ['North', 'West', 'South', 'East'];
 const celsius_TYPE = 'Celsius';
 const celsius_UNIT = 'C';
 const fahrenheit_TYPE = 'Fahrenheit';
@@ -12,9 +12,17 @@ const MpH_TYPE = 'Miles per hour';
 const MpS_UNIT = 'MPS';
 const MpS_TYPE = 'Meters per second';
 
+const Types = {
+    TEMPERATURE : 'temperature',
+    PRECIPITATION : 'precipitation',
+    WIND_SPEED : 'wind speed',
+    CLOUD_COVERAGE : 'cloud coverage',
+
+}
 
 module.exports = {
-    direction,
+    Types,
+    Direction,
     celsius_TYPE,
     celsius_UNIT,
     fahrenheit_TYPE,

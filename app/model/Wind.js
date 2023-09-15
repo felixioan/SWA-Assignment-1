@@ -1,40 +1,42 @@
-import {createWeatherData} from "./WeatherData"
-import {MpH_UNIT, MpS_UNIT, direction} from './Metrics'
-
+const {createWeatherData, WeatherData} = require ("./WeatherData");
+const {MpH_UNIT, MpS_UNIT, Direction} = require ("./Metrics");
 function createWind(value, type, unit, time, place, direction) {
-    let weatherData = createWeatherData(value, type, unit, time, place);
+    let weatherData = new WeatherData(value, type, unit, time, place);
 
 
-    let wind = Obejct.assign({}, weatherData);
+  const getDirection = function ()
+  {return direction}
 
-    wind.cardinalPo = direction;
 
-    wind.getDirection = function () {
-        return this.direction
-    }
-    wind.setDirection = function (_direction) {
-        this.direction = _direction
+    const setDirection = function (_direction) {
+        direction = _direction
     }
 
-    wind.convertToMpH = () => {
+    const convertToMpH = () => {
         if (wind.getUnit() !== MpH_UNIT) {
             wind.setUnit(MpH_UNIT);
             wind.setValue(wind.getValue() * 2.237);
-            wind.setDirection(direction)
+            wind.setDirection(Direction)
         }
     }
-    wind.convertToMpS = () => {
+    const convertToMpS = () => {
         if (wind.getUnit() !== MpS_UNIT) {
             wind.setUnit(MpS_UNIT);
             wind.setValue(wind.getValue() / 2.237);
-            wind.setDirection(direction)
+            wind.setDirection(Direction)
         }
     }
 
 
-    return wind;
+    return {
+        ...weatherData,
+        convertToMpH,
+        convertToMpS,
+        getDirection,
+        setDirection
+    }
 }
 
 module.exports = {
-    createWind
+    Wind: createWind,
 }
